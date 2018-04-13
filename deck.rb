@@ -4,6 +4,7 @@ class Deck
   attr_accessor :foregoing_card
   attr_accessor :cards
 
+  # いらない
   CardStruct = Struct.new(:suit, :rank)
   def initialize
     @foregoing_card = []

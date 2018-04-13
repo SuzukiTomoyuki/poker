@@ -44,6 +44,7 @@ end
 
 def main
   deck = Deck.new
+  # playerクラスを作る
   player1_hand = deck.distribute_hand(3)
   player2_hand = deck.distribute_hand(3)
   player1_hand_array = []
