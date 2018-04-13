@@ -12,6 +12,10 @@ class Deck
   
   def distribute_hand(hands_num)
     while !create_hand(hands_num) do 
+      if self.foregoing_card.length + hands_num > 52
+        puts "もうデッキが無いぽ"
+        exit
+      end
     end
     return self.cards
   end
