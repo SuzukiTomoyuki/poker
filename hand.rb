@@ -10,10 +10,10 @@ class Hand
 	end
 
 	def three_of_a_kind?()
-		for i in 0..self.my_hand.length - 2
-			if(self.my_hand[i].rank == self.my_hand[i+1].rank)
-				for j in i+2..self.my_hand.length - 1
-					return true if self.my_hand[i].rank == self.my_hand[j].rank
+		for i in 0..@my_hand.length - 2
+			if(@my_hand[i].rank == @my_hand[i+1].rank)
+				for j in i+2..@my_hand.length - 1
+					return true if @my_hand[i].rank == @my_hand[j].rank
 				end
 			end
 		end
@@ -42,7 +42,7 @@ class Hand
 	end
 	
 	def pair?()
-		return true if (hand_rank().uniq.length == self.my_hand.length - 1)
+		return true if (hand_rank().uniq.length == @my_hand.length - 1)
 		false
 	end
 
@@ -50,10 +50,9 @@ class Hand
 		!pair?() and !flash?()
 	end
 
-	# ゲッターはインスタンス変数のみに有効(セッターも同様)
 	def hand_rank()
 		rank_array = []
-		self.my_hand.each do |num|
+		@my_hand.each do |num|
 			rank_array.push(num.rank)
 		end
 		rank_array
@@ -61,7 +60,7 @@ class Hand
 
 	def hand_suit()
 		suit_array = []
-		self.my_hand.each do |num|
+		@my_hand.each do |num|
 			suit_array.push(num.suit)
 		end
 		suit_array

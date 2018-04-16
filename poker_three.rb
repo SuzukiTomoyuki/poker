@@ -5,10 +5,13 @@ class PokerThree
   def open(player1, player2)
     player1_hand = get_your_hand(player1)
     player2_hand = get_your_hand(player2)
+    puts player1_hand, player2_hand
     if (player1_hand < player2_hand)
       OPEN_RESULT["win"]
-    else (player1_hand == player2_hand)
+    elsif (player1_hand == player2_hand)
       check_same_hand_conditions(player1, player1_hand, player2, player2_hand)
+    else
+      OPEN_RESULT["lose"]
     end
   end
   
@@ -102,14 +105,14 @@ class PokerThree
       return HAND_STRONGTH_LIST["straight_flash"]
     elsif (hand_card.three_of_a_kind?)
       return HAND_STRONGTH_LIST["three_of_a_kind"]
-    elsif (hand_card.straight?)
-      return HAND_STRONGTH_LIST["straight"]
     elsif (hand_card.flash?)
       return HAND_STRONGTH_LIST["flash"]
     elsif (hand_card.pair?)
       return HAND_STRONGTH_LIST["pair"]
     elsif (hand_card.highcard?)
       return HAND_STRONGTH_LIST["highcard"]
+    elsif (hand_card.straight?)
+      return HAND_STRONGTH_LIST["straight"]
     end
   end
 end
