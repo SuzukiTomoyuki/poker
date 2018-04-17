@@ -47,16 +47,16 @@ class PokerThree
     end
   end
 
-  def check_three_of_a_kind(player1_hand, player2_hand)
-    if (player1_hand == player2_hand)
+  def check_three_of_a_kind(player1_cards, player2_cards)
+    if (player1_cards == player2_cards)
       OPEN_RESULT["draw"]
-    elsif (player1_hand == 1)
+    elsif (player1_cards == 1)
       OPEN_RESULT["win"]
-    elsif (player2_hand == 1)
+    elsif (player2_cards == 1)
       OPEN_RESULT["lose"]
-    elsif (player1_hand > player2_hand)
+    elsif (player1_cards > player2_cards)
       OPEN_RESULT["win"]
-    elsif (player1_hand < player1_hand)
+    elsif (player1_cards < player1_cards)
       OPEN_RESULT["lose"]
     end
   end
