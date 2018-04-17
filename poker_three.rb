@@ -90,11 +90,18 @@ class PokerThree
     end
   end
 
-  def check_pair_hand(player1_hand, player2_hand)
-    if ((player1_hand & player2_hand).length != 2)
-      player1_hand.delete((player1_hand & player2_hand)[0])
-      player2_hand.delete((player2_hand & player2_hand)[0])
-      check_flash_high_hand(player1_hand, player2_hand)
+  def check_pair_hand(player1_cards, player2_cards)
+    player1_pair_rank = player1_cards.group_by{|i| i}.reject{|k,v| v.one?}.keys[0]
+    player2_pair_rank = player2_cards.group_by{|i| i}.reject{|k,v| v.one?}.keys[0]
+    if player1_pair_rank > player2_pair_rank
+      return OPEN_RESULT["win"]
+    elsif player1_pair_rank < player2_pair_rank
+      return OPEN_RESULT["lose"]
+    end
+    if ((player1_cards & player2_cards).length != 2)
+      player1_cards.delete((player1_cards & player2_cards)[0])
+      player2_cards.delete((player2_cards & player2_cards)[0])
+      check_flash_high_hand(player1_cards, player2_cards)
     else
       OPEN_RESULT["draw"]
     end

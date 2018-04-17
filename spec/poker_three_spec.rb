@@ -155,15 +155,15 @@ describe PokerThree do
         expect(poker.open(player25, player26)).to eq -1
       end
 
-      hand_array = [Card.new(suit:"♦︎", rank:"5"),
-                    Card.new(suit:"♣️", rank:"5"),
+      hand_array = [Card.new(suit:"♦︎", rank:"6"),
+                    Card.new(suit:"♣️", rank:"6"),
                     Card.new(suit:"♠️", rank:"Q")]
       player33 = Hand.new(*hand_array)
       hand_array = [Card.new(suit:"❤︎", rank:"5"),
                     Card.new(suit:"♠️", rank:"5"),
                     Card.new(suit:"♣️", rank:"2")]
       player34 = Hand.new(*hand_array)
-      it 'ペア同士だが、プレイヤー3(♦5,♣️5,♠️Q)とプレイヤー4(❤︎5,♠︎5,♣️2)のため、プレイヤー１の勝利。' do
+      it 'ペア同士だが、プレイヤー3(♦6,♣️6,♠️Q)とプレイヤー4(❤︎5,♠︎5,♣️2)のため、プレイヤー１の勝利。' do
         expect(poker.open(player33, player34)).to eq 1
       end
       hand_array = [Card.new(suit:"♦︎", rank:"A"),

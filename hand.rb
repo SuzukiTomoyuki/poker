@@ -15,7 +15,7 @@ class Hand
 	end
 
 	def straight?()
-		my_hand_ranks = hand_rank().sort!
+		my_hand_ranks = hand_rank().sort
 		if my_hand_ranks[0] == 1
 			my_hand_ranks = [my_hand_ranks.sort[1], my_hand_ranks.sort[2], 14]
 		end
