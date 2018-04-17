@@ -4,9 +4,9 @@ require './hand'
 require './poker_three'
 require './player'
 
-
+# openは予約語なので使用は控える
 def open(poker, player1, player2)
-  # puts poker.open(Hand.new(*player1.hand), Hand.new(*player2.hand))
+  # handで重複しているからわけるといいかも
   case poker.open(Hand.new(*player1.hand), Hand.new(*player2.hand))
   when 1 then
     puts("#{player1.id}の勝ち")
@@ -18,6 +18,7 @@ def open(poker, player1, player2)
 end
 
 def main
+  # 入力をアダプターパターンで実装して切り分けを行う
   poker = PokerThree.new
   deck = Deck.new
   player1 = Player.new(deck, 3, "player1")

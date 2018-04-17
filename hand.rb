@@ -10,30 +10,17 @@ class Hand
 	end
 
 	def three_of_a_kind?()
-		for i in 0..@my_hand.length - 2
-			if(@my_hand[i].rank == @my_hand[i+1].rank)
-				for j in i+2..@my_hand.length - 1
-					return true if @my_hand[i].rank == @my_hand[j].rank
-				end
-			end
-		end
+		return true if (hand_rank().uniq.length == 1)
 		false
 	end
 
 	def straight?()
-		my_hand_rank_array = hand_rank()
-		diff_max_min_num = my_hand_rank_array.length - 1
-		if ((my_hand_rank_array.min - my_hand_rank_array.max).abs == diff_max_min_num)
-			return true
-		elsif ((my_hand_rank_array.min - my_hand_rank_array.max).abs == 12)
-			if (my_hand_rank_array.sum < 17 and my_hand_rank_array.length != 2)
-				return false
-			else 
-				return true
-			end
-		else
-			return false
+		my_hand_ranks = hand_rank().sort!
+		if my_hand_ranks[0] == 1
+			my_hand_ranks = [my_hand_ranks.sort[1], my_hand_ranks.sort[2], 14]
 		end
+		return true if [my_hand_ranks[0] - my_hand_ranks.min, my_hand_ranks[1] - my_hand_ranks.min, my_hand_ranks[2] - my_hand_ranks.min] == [0,1,2]
+		false
 	end
 
 	def flash?()
@@ -51,19 +38,11 @@ class Hand
 	end
 
 	def hand_rank()
-		rank_array = []
-		@my_hand.each do |num|
-			rank_array.push(num.rank)
-		end
-		rank_array
+		@my_hand.map { |item| item.rank }
 	end
 
 	def hand_suit()
-		suit_array = []
-		@my_hand.each do |num|
-			suit_array.push(num.suit)
-		end
-		suit_array
+		@my_hand.map { |item| item.suit }
 	end
 		
 end
